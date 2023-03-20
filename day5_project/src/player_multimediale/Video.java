@@ -1,9 +1,9 @@
 package player_multimediale;
 
 public class Video extends Elemento_Multimediale {
-	private int volume;
-	private int durata;
-	private int luminosità;
+	int volume;
+	int durata;
+	int luminosità;
 
 	public Video(String nomeFile, int durataFile, int volumeFile, int lum) {
 		super(nomeFile);

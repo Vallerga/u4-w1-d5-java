@@ -1,7 +1,7 @@
 package player_multimediale;
 
 public class Immagine extends Elemento_Multimediale  {	
-	private int luminosità;
+	int luminosità;
 	
 	public Immagine(String nomeFile, int lum) {
 		super(nomeFile);

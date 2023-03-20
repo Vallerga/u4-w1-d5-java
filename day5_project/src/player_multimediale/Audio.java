@@ -1,8 +1,8 @@
 package player_multimediale;
 
 public class Audio extends Elemento_Multimediale {
-	private int volume;
-	private int durata;
+	int volume;
+	int durata;
 
 	public Audio(String nomeFile, int durataFile, int volumeFile) {
 		super(nomeFile);
