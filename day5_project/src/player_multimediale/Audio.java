@@ -1,69 +1,61 @@
 package player_multimediale;
 
 public class Audio extends Elemento_Multimediale {
-	private int volume = 1;
-	private int durata = 1;
-	private String file;
-	
-	Audio(String nomeFile, int durataAudio, int volumeFile, Tipologia tipo) {
-		setDurata(durataAudio); // controllo durata
+	private int volume;
+	private int durata;
+
+	public Audio(String nomeFile, int durataFile, int volumeFile) {
+		super(nomeFile);
+		setDurata(durataFile);
+		setVolume(volumeFile);
+		System.out.println("esecuzione file:");
+		play(volume, durata, super.titolo);
 	}
 
-	
-	// riproduce un file ( cioè lo stampa)
-	// controlla la durata
-	// ripete la stampa per il numero di durata
-	// controlla volume
-	// aggiunge un punto esclamativo ad ogni aumento di volume
-	
-	public void play(int volumeIstanza, int durataIstanza, String titoloFile) {
-		// setVolume(volumeIstanza); // controllo volume
-		
-		controllovolume(volumeIstanza, titoloFile); // aggiungo punti esclamativi
+	public void play(int volumeIstanza, int durataIstanza, String titoloFile) {		
+		controlloVolume(volume, super.titolo);
 		for (int i = 0; i < this.durata; i++) {
-			System.out.println(file);
+			System.out.println(super.titolo);
 		}
 	}
-
-	void controllovolume(int vol, String tit) {
-		if (this.volume < vol ) {
-			for (int i = this.volume; i < vol; i++) {
-				alzaVolume(tit);
-			}
-		} 
-		/*else if (par <= this.volume) {
-			for (int i = 0; i > par; i--) {abbassaVolume(tit);}}*/
-	}
-
-	protected void alzaVolume(String titolo) {
-		this.file = titolo + "!";
-	}
-
-	/* not implemented function
-	 * protected String abbassaVolume(String titolo) {
-		String singChar[] = titolo.split("");
-		if (singChar[singChar.length-1] != "!")
-			for(int i = 0; i < singChar.length-2; i++) {
-		titolo = singChar;
-		}
-		return titolo; 
-	}*/
 	
-	public void setDurata (int dur) {
+	public void setDurata(int dur) {
 		this.durata = dur;
 	}
-	
-	public void setVolume (int vol) {
+
+	public void setVolume(int vol) {
 		this.volume = vol;
 	}
 	
-	public void setFile (String nome) {
-		this.file = nome;
+	void controlloVolume(int vol, String tit) {
+		if (0 < vol) {
+			for (int i = 0; i < vol; i++) {
+				alzaVolume(tit);
+			}
+		} else if (0 > vol) {
+			for (int i = 0; i < vol; i--) {
+				abbassaVolume(tit);
+			}
+		}
+
 	}
 	
-	private void stampaAudio() {
-		for (int i = 0; i < this.durata; i++) {
-			System.out.println(file);
+	void alzaVolume(String titolo) {
+		super.titolo += "!";
+	}
+
+	void abbassaVolume(String titolo) {
+		String shortedArr[] = new String[titolo.length() - 1];
+		String singChar[] = titolo.split("");
+		String standard = "!";
+		if (singChar[titolo.length() - 1].equals(standard)) {
+			for (int i = 0; i < singChar.length - 1; i++) {
+				shortedArr[i] = singChar[i];
+			}
+			titolo = String.join("", shortedArr);			
+		} else {
+			titolo = String.join("", singChar);
 		}
+		super.titolo = titolo;
 	}
 }
