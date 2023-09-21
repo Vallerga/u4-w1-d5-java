@@ -175,7 +175,7 @@ public class Player_Multimediale {
 	public static void settaLuminosità(int lum) {
 		System.out.println("Digita la luminosità: ");
 		luminosità = prendiInt(); // cattura luminosità
-		System.out.println("Il luminosità sarà: " + luminosità);
+		System.out.println("La luminosità sarà: " + luminosità);
 		System.out.println("");
 	}
 
@@ -195,7 +195,7 @@ public class Player_Multimediale {
 	public static void settaTitolo(String titoloFile) {
 		System.out.println("Digita il nome del file: ");
 		titolo = prendiString(); // cattura nome
-		System.out.println("Il file si chiamerà sarà: " + titolo);
+		System.out.println("Il file si chiamerà: " + titolo);
 		System.out.println("");
 	}
 }
